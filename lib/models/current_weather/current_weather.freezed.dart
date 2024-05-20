@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) {
+  return _CurrentWeather.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CurrentWeather {
   List<Weather> get weathers => throw _privateConstructorUsedError;
@@ -21,6 +25,7 @@ mixin _$CurrentWeather {
   Sys get sys => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CurrentWeatherCopyWith<CurrentWeather> get copyWith =>
       throw _privateConstructorUsedError;
@@ -157,6 +162,9 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
       required this.name})
       : _weathers = weathers;
 
+  factory _$CurrentWeatherImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CurrentWeatherImplFromJson(json);
+
   final List<Weather> _weathers;
   @override
   List<Weather> get weathers {
@@ -188,6 +196,7 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
             (identical(other.name, name) || other.name == name));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_weathers), main, sys, name);
@@ -198,6 +207,13 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
   _$$CurrentWeatherImplCopyWith<_$CurrentWeatherImpl> get copyWith =>
       __$$CurrentWeatherImplCopyWithImpl<_$CurrentWeatherImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CurrentWeatherImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CurrentWeather implements CurrentWeather {
@@ -206,6 +222,9 @@ abstract class _CurrentWeather implements CurrentWeather {
       required final Main main,
       required final Sys sys,
       required final String name}) = _$CurrentWeatherImpl;
+
+  factory _CurrentWeather.fromJson(Map<String, dynamic> json) =
+      _$CurrentWeatherImpl.fromJson;
 
   @override
   List<Weather> get weathers;

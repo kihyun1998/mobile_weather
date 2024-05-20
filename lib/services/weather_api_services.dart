@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mobile_weather/constants/constants.dart';
 import 'package:mobile_weather/exceptions/weather_exceptio.dart';
+import 'package:mobile_weather/models/current_weather/current_weather.dart';
 import 'package:mobile_weather/models/direct_geocoding/direct_geocoding.dart';
 import 'package:mobile_weather/services/dio_error_handler.dart';
 
@@ -30,6 +31,24 @@ class WeatherAPIServices {
       final directGeocoding = DirectGeocoding.fromJson(res.data[0]);
 
       return directGeocoding;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<CurrentWeather> getWeather(DirectGeocoding directGeocoding) async {
+    try {
+      final Response res = await dio.get('/data/2.5/weather', queryParameters: {
+        'lat': '${directGeocoding.lat}',
+        'lon': '${directGeocoding.lon}',
+        'units': pubUNIT,
+        'appid': dotenv.env['APPID'],
+      });
+      if (res.statusCode != 200) {
+        throw dioErrorHandler(res);
+      }
+      final CurrentWeather currentWeather = CurrentWeather.fromJson(res.data);
+      return currentWeather;
     } catch (e) {
       rethrow;
     }

@@ -12,6 +12,9 @@ class CurrentWeather with _$CurrentWeather {
     required Sys sys,
     required String name,
   }) = _CurrentWeather;
+
+  factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
+      _$CurrentWeatherFromJson(json);
 }
 
 @freezed
