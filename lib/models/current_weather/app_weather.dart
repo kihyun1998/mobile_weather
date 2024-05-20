@@ -22,8 +22,8 @@ class AppWeather with _$AppWeather {
       temp: currentWeather.main.temp,
       tempMin: currentWeather.main.tempMin,
       tempMax: currentWeather.main.tempMax,
-      icon: currentWeather.weathers[0].icon,
-      description: currentWeather.weathers[0].description,
+      icon: currentWeather.weather[0].icon,
+      description: currentWeather.weather[0].description,
     );
   }
 }

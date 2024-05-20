@@ -8,7 +8,7 @@ part of 'current_weather.dart';
 
 _$CurrentWeatherImpl _$$CurrentWeatherImplFromJson(Map<String, dynamic> json) =>
     _$CurrentWeatherImpl(
-      weathers: (json['weathers'] as List<dynamic>)
+      weather: (json['weather'] as List<dynamic>)
           .map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
       main: Main.fromJson(json['main'] as Map<String, dynamic>),
@@ -19,7 +19,7 @@ _$CurrentWeatherImpl _$$CurrentWeatherImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$CurrentWeatherImplToJson(
         _$CurrentWeatherImpl instance) =>
     <String, dynamic>{
-      'weathers': instance.weathers.map((e) => e.toJson()).toList(),
+      'weather': instance.weather.map((e) => e.toJson()).toList(),
       'main': instance.main.toJson(),
       'sys': instance.sys.toJson(),
       'name': instance.name,

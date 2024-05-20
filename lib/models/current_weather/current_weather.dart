@@ -7,7 +7,7 @@ part 'current_weather.g.dart';
 class CurrentWeather with _$CurrentWeather {
   @JsonSerializable(explicitToJson: true)
   const factory CurrentWeather({
-    required List<Weather> weathers,
+    required List<Weather> weather,
     required Main main,
     required Sys sys,
     required String name,

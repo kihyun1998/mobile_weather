@@ -20,7 +20,7 @@ CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CurrentWeather {
-  List<Weather> get weathers => throw _privateConstructorUsedError;
+  List<Weather> get weather => throw _privateConstructorUsedError;
   Main get main => throw _privateConstructorUsedError;
   Sys get sys => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $CurrentWeatherCopyWith<$Res> {
           CurrentWeather value, $Res Function(CurrentWeather) then) =
       _$CurrentWeatherCopyWithImpl<$Res, CurrentWeather>;
   @useResult
-  $Res call({List<Weather> weathers, Main main, Sys sys, String name});
+  $Res call({List<Weather> weather, Main main, Sys sys, String name});
 
   $MainCopyWith<$Res> get main;
   $SysCopyWith<$Res> get sys;
@@ -56,15 +56,15 @@ class _$CurrentWeatherCopyWithImpl<$Res, $Val extends CurrentWeather>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weathers = null,
+    Object? weather = null,
     Object? main = null,
     Object? sys = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
-      weathers: null == weathers
-          ? _value.weathers
-          : weathers // ignore: cast_nullable_to_non_nullable
+      weather: null == weather
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>,
       main: null == main
           ? _value.main
@@ -106,7 +106,7 @@ abstract class _$$CurrentWeatherImplCopyWith<$Res>
       __$$CurrentWeatherImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Weather> weathers, Main main, Sys sys, String name});
+  $Res call({List<Weather> weather, Main main, Sys sys, String name});
 
   @override
   $MainCopyWith<$Res> get main;
@@ -125,15 +125,15 @@ class __$$CurrentWeatherImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weathers = null,
+    Object? weather = null,
     Object? main = null,
     Object? sys = null,
     Object? name = null,
   }) {
     return _then(_$CurrentWeatherImpl(
-      weathers: null == weathers
-          ? _value._weathers
-          : weathers // ignore: cast_nullable_to_non_nullable
+      weather: null == weather
+          ? _value._weather
+          : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>,
       main: null == main
           ? _value.main
@@ -156,21 +156,21 @@ class __$$CurrentWeatherImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CurrentWeatherImpl implements _CurrentWeather {
   const _$CurrentWeatherImpl(
-      {required final List<Weather> weathers,
+      {required final List<Weather> weather,
       required this.main,
       required this.sys,
       required this.name})
-      : _weathers = weathers;
+      : _weather = weather;
 
   factory _$CurrentWeatherImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentWeatherImplFromJson(json);
 
-  final List<Weather> _weathers;
+  final List<Weather> _weather;
   @override
-  List<Weather> get weathers {
-    if (_weathers is EqualUnmodifiableListView) return _weathers;
+  List<Weather> get weather {
+    if (_weather is EqualUnmodifiableListView) return _weather;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_weathers);
+    return EqualUnmodifiableListView(_weather);
   }
 
   @override
@@ -182,7 +182,7 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
 
   @override
   String toString() {
-    return 'CurrentWeather(weathers: $weathers, main: $main, sys: $sys, name: $name)';
+    return 'CurrentWeather(weather: $weather, main: $main, sys: $sys, name: $name)';
   }
 
   @override
@@ -190,7 +190,7 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CurrentWeatherImpl &&
-            const DeepCollectionEquality().equals(other._weathers, _weathers) &&
+            const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.sys, sys) || other.sys == sys) &&
             (identical(other.name, name) || other.name == name));
@@ -199,7 +199,7 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_weathers), main, sys, name);
+      const DeepCollectionEquality().hash(_weather), main, sys, name);
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +218,7 @@ class _$CurrentWeatherImpl implements _CurrentWeather {
 
 abstract class _CurrentWeather implements CurrentWeather {
   const factory _CurrentWeather(
-      {required final List<Weather> weathers,
+      {required final List<Weather> weather,
       required final Main main,
       required final Sys sys,
       required final String name}) = _$CurrentWeatherImpl;
@@ -227,7 +227,7 @@ abstract class _CurrentWeather implements CurrentWeather {
       _$CurrentWeatherImpl.fromJson;
 
   @override
-  List<Weather> get weathers;
+  List<Weather> get weather;
   @override
   Main get main;
   @override

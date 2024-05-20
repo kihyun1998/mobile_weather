@@ -44,6 +44,7 @@ class WeatherAPIServices {
         'units': pubUNIT,
         'appid': dotenv.env['APPID'],
       });
+
       if (res.statusCode != 200) {
         throw dioErrorHandler(res);
       }
