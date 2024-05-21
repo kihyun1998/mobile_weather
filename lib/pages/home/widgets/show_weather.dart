@@ -24,11 +24,58 @@ class ShowWeather extends ConsumerWidget {
           return const SelectCity();
         }
         final appWeather = AppWeather.fromCurrentWeather(data);
-        return Center(
-          child: Text(
-            appWeather.name,
-            style: const TextStyle(fontSize: 18),
-          ),
+        return ListView(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 6,
+            ),
+            Text(
+              appWeather.name,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  TimeOfDay.fromDateTime(DateTime.now()).format(context),
+                  style: const TextStyle(fontSize: 18),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  "(${appWeather.country})",
+                  style: const TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+            const SizedBox(height: 60),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "${appWeather.temp}",
+                  style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Column(
+                  children: [
+                    Text(
+                      "${appWeather.tempMax}",
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      "${appWeather.tempMin}",
+                      style: const TextStyle(fontSize: 16),
+                    )
+                  ],
+                )
+              ],
+            )
+          ],
         );
       },
       error: (error, stackTrace) {
