@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_weather/extentions/async_value_xx.dart';
+import 'package:mobile_weather/models/current_weather/current_weather.dart';
+import 'package:mobile_weather/models/custom_error/error.dart';
 import 'package:mobile_weather/pages/home/providers/weather_provider.dart';
+import 'package:mobile_weather/pages/home/widgets/show_weather.dart';
 import 'package:mobile_weather/pages/search/search_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -16,6 +19,21 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AsyncValue<CurrentWeather?>>(weatherProvider, (previous, next) {
+      next.whenOrNull(
+        error: (error, stackTrace) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text((error as CustomError).errMsg),
+              );
+            },
+          );
+        },
+      );
+    });
+
     final weatherState = ref.watch(weatherProvider);
     print("loging: ${weatherState.toStr}");
     return Scaffold(
@@ -36,8 +54,14 @@ class _HomePageState extends ConsumerState<HomePage> {
           )
         ],
       ),
-      body: const Center(
-        child: Text('Home'),
+      body: ShowWeather(weatherState: weatherState),
+      floatingActionButton: FloatingActionButton(
+        onPressed: city == null
+            ? null
+            : () {
+                ref.read(weatherProvider.notifier).fetchWeather(city!);
+              },
+        child: const Icon(Icons.refresh),
       ),
     );
   }
