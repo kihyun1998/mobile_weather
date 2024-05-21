@@ -6,6 +6,7 @@ import 'package:mobile_weather/models/custom_error/error.dart';
 import 'package:mobile_weather/pages/home/providers/weather_provider.dart';
 import 'package:mobile_weather/pages/home/widgets/show_weather.dart';
 import 'package:mobile_weather/pages/search/search_page.dart';
+import 'package:mobile_weather/widgets/error_dialog.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -22,14 +23,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     ref.listen<AsyncValue<CurrentWeather?>>(weatherProvider, (previous, next) {
       next.whenOrNull(
         error: (error, stackTrace) {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                content: Text((error as CustomError).errMsg),
-              );
-            },
-          );
+          errorDialog(context, (error as CustomError).errMsg);
         },
       );
     });
